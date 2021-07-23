@@ -1,0 +1,49 @@
+$green:#E8E7D5;
+$d-green:#80806d;
+
+.authContainer {
+    min-height: 100vh;
+    height: 100%;
+    padding: 16px;
+    background: $green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+        background: #fff;
+        box-shadow: -6px 6px 10px #00000017;
+        min-width: 380px;
+        padding: 32px;
+        border-radius: 8px;
+
+        label {
+            margin-bottom: 4px;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            width: 100%;
+        }
+
+        .loaderContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 12px;
+            width: 100%;
+            color:$d-green;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+      
+    }
+}

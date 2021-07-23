@@ -1,0 +1,151 @@
+$green:#E8E7D5;
+$b-d-green:#cacac0;
+$b-o-d-green:#9c9c87;
+
+$red:rgba(235, 51, 51, 0.89);
+$d-red:rgb(194, 18, 18);
+$o-red:rgba(252, 113, 113, 0.589);
+
+$b-d-green:#E8E7D5;
+$b-o-d-green:#80806d;
+
+$d-green:rgb(46, 150, 14);
+$o-green:rgba(107, 241, 74, 0.589);
+
+$d-yellow:rgb(137, 139, 5);
+$o-yellow:rgba(240, 227, 54, 0.712);
+
+$black:#222;
+
+.elements {
+    padding: 120px;
+}
+
+.pButton {
+    background: $red !important;
+    color: #fff;
+    border: 1px solid $red;
+
+    &:hover {
+        background: transparent !important;
+        color: $red;
+    }
+}
+
+.sButton {
+    background: $black !important;
+    color: #fff;
+    border: 1px solid $black;
+
+    &:hover {
+        background: transparent !important;
+        color: $black;
+    }
+}
+
+.tButton {
+    background: $green !important;
+    color: $b-o-d-green;
+    border: 1px solid $green;
+
+    &:hover {
+        background: transparent !important;
+        color: $b-o-d-green;
+    }
+}
+
+.pButtonO {
+    background: transparent !important;
+    color: $red;
+    border: 1px solid $red;
+
+    &:hover {
+        background: $red !important;
+        color: #fff;
+    }
+}
+
+.sButtonO {
+    background: transparent !important;
+    color: $black;
+    border: 1px solid $black;
+
+    &:hover {
+        background: $black !important;
+        color: #fff;
+    }
+}
+
+.tButtonO {
+    background: transparent !important;
+    color: $b-o-d-green;
+    border: 1px solid $b-o-d-green;
+
+    &:hover {
+        background: $b-o-d-green !important;
+        color: #fff;
+    }
+}
+
+.sError {
+    padding: 12px;
+    background: $o-red;
+    color: $d-red;
+    font-weight: 600;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.sSucces {
+    padding: 12px;
+    background: $o-green;
+    color: $d-green;
+    font-weight: 600;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.sWarning {
+    padding: 12px;
+    background: $o-yellow;
+    color: $d-yellow;
+    font-weight: 600;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.textFieldContainer {
+    margin-bottom: 24px;
+
+    .label {
+        font-size: 14px;
+        text-align: left;
+        width: 100%;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .error {
+        color: $red;
+        font-size: .8rem;
+        text-align: left;
+        margin-top: 8px;
+    }
+}
+
+
+
+.hUnderline {
+    width: 48px;
+    height: 4px;
+    background: #e8e7d5;
+    margin-top: 8px;
+    margin-bottom: 32px;
+    border-radius: 60px;
+}
+
+.inputError {
+    border: 1px solid $red !important;
+}

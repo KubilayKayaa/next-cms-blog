@@ -1,0 +1,16 @@
+.modalContainer{
+    min-width: 380px;
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 32px;
+       .closeModalButton{
+           cursor: pointer;
+       }
+      
+    }
+    button,input,textarea{
+        width: 100%;
+    }
+}

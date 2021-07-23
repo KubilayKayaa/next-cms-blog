@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+
+$transition:250ms;
+$radius:4px;
+$purple: purple;
+
+html,
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+}
+
+a{
+  &:hover{
+    color:inherit;
+  }
+}
+
+h1 {
+  font-size: 32px;
+  transition: $transition all;
+}
+
+h3 {
+  font-size: 24px;
+  transition: $transition all;
+}
+
+p {
+  font-size: 15px;
+  transition: $transition all;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #e9e9e9;
+  border-radius: $radius;
+  color: rgb(90, 90, 90);
+  transition: $transition all;
+
+}
+
+textarea {
+  padding: 10px;
+  border: 1px solid #e9e9e9;
+  border-radius: $radius;
+  color: rgb(90, 90, 90);
+  transition: $transition all;
+  resize: vertical;
+
+  &::placeholder {
+    color: #b3b3b3;
+  }
+}
+textarea, input, button, select { font-family: inherit; font-size: inherit; }
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: $radius;
+  transition: $transition all;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  &:active{
+    opacity: .4;
+  }
+}
+
+.ReactModal__Content{
+  border:1px solid rgb(247, 247, 247) !important;
+  border-radius: 4px !important;
+  box-shadow: -6px 6px 10px #eee;
+}
+
