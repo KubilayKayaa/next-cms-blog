@@ -13,7 +13,7 @@ function PostDetail({ post, comments }) {
   const Router = useRouter();
 
   const addComment = async (values) => {
-    const res = await fetch("http://localhost:3000/api/admin/comments", {
+    const res = await fetch(`${http}/api/admin/comments`, {
       method: "POST",
       headers: {
         Accept: "application/json",
