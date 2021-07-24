@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./detail.module.scss";
 import { MdArrowBack } from "react-icons/md";
 import Link from "next/link";
@@ -8,9 +8,12 @@ import { Formik, Form } from "formik";
 import TextField from "../../components/TextField";
 import adminComment from "../../FormikValidations/adminComment";
 import http from "../../http-config";
+import Loader from "../../components/Loader/Loader";
 
 function PostDetail({ post, comments }) {
   const Router = useRouter();
+
+  const [showLoader, setShowLoader] = useState(false);
 
   const addComment = async (values) => {
     const res = await fetch(`${http}/api/admin/comments`, {
@@ -22,7 +25,10 @@ function PostDetail({ post, comments }) {
       body: JSON.stringify(values),
     });
     if (res.status === 201) {
+      setShowLoader(true);
       Router.reload(window.location.pathname);
+    } else {
+      setShowLoader(false);
     }
   };
 
@@ -30,7 +36,7 @@ function PostDetail({ post, comments }) {
     <div className={styles.container}>
       <div className={styles.post}>
         <button
-          className={utilsStyles.tButton + " " + styles.back}
+          className={utilsStyles.tButton + "  " + styles.back}
           onClick={() => Router.push("/")}
         >
           <MdArrowBack size="32" />
@@ -73,27 +79,33 @@ function PostDetail({ post, comments }) {
             <Form className={styles.form}>
               <h4>Add Comment</h4>
 
-              <TextField
-                label="Full Name"
-                name="fullName"
-                type="text"
-                isInput={true}
-              />
-              <TextField
-                label="Email"
-                name="email"
-                type="text"
-                isInput={true}
-              />
+              <div className={styles.formInputs}>
+                <TextField
+                  label="Full Name"
+                  name="fullName"
+                  type="text"
+                  isInput={true}
+                />
+                <TextField
+                  label="Email"
+                  name="email"
+                  type="text"
+                  isInput={true}
+                />
+              </div>
               <TextField
                 label="Comment"
                 name="comment"
                 type="text"
                 isInput={false}
               />
-              <button type="submit" className={utilsStyles.tButton}>
-                Add
-              </button>
+              {showLoader ? (
+                <Loader />
+              ) : (
+                <button type="submit" className={utilsStyles.tButton}>
+                  Add
+                </button>
+              )}
             </Form>
           )}
         </Formik>

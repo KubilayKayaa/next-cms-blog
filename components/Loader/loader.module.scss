@@ -5,6 +5,10 @@ $d-green:#E8E7D5;
     position: relative;
     width: 80px;
     height: 80px;
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+    text-align: center;
   }
   .ldsRipple div {
     position: absolute;
