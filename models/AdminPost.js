@@ -11,6 +11,9 @@ const AdminPostSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please add a description."],
   },
+  postImage: {
+    type: String,
+  },
   time: { type: Date, default: Date.now },
   active: { type: Boolean, default: true },
 });

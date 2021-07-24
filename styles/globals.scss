@@ -14,6 +14,14 @@
   }
 }
 
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 
 $transition:250ms;
 $radius:4px;

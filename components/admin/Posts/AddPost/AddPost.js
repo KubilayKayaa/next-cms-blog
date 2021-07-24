@@ -8,6 +8,7 @@ import TextField from "../../../TextField";
 import adminAddPost from "../../../../FormikValidations/adminAddPost";
 import { useRouter } from "next/dist/client/router";
 import http from "../../../../http-config";
+import Loader from "../../../../components/Loader/Loader";
 
 const customStyles = {
   content: {
@@ -23,9 +24,12 @@ const customStyles = {
 export default function AddPost() {
   const Router = useRouter();
 
+  const [fileSelected, setFileSelected] = useState();
+  const [addedImage, setAddedImage] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSameData, setIsSameData] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const openModal = () => setIsOpen(true);
   const afterOpenModal = () => {};
@@ -40,30 +44,50 @@ export default function AddPost() {
     if (sameData) {
       setIsSameData(true);
     } else {
-      const res = await fetch(`${http}/api/admin/posts`, {
+      const formData = new FormData();
+      formData.append("file", fileSelected);
+      formData.append("upload_preset", "mfddldmx");
+
+      fetch("https://api.cloudinary.com/v1_1/dkkutz5oe/image/upload", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then(async (data) => {
+          if (data.secure_url !== "") {
+            values.postImage = `${data.url}`;
 
-      const data = await res.json();
+            const resPost = await fetch(`${http}/api/admin/posts`, {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(values),
+            });
 
-      if (data.success == true) {
-        setIsSameData(false);
-        setIsSuccess(true);
-        values.title = "";
-        values.description = "";
-        Router.reload(window.location.pathname);
-        setTimeout(() => {
-          closeModal();
-          setIsSuccess(false);
-        }, 500);
-      }
+            const postData = await resPost.json();
+            console.log(postData);
+            if (postData.success == true) {
+              setIsLoading(true);
+              setIsSameData(false);
+              setIsSuccess(true);
+              values.title = "";
+              values.description = "";
+              values.file = "";
+              Router.reload(window.location.pathname);
+              setTimeout(() => {
+                closeModal();
+                setIsSuccess(false);
+              }, 500);
+            }
+          }
+        })
+        .catch((err) => console.error(err));
     }
   };
+
+  console.log(fileSelected);
 
   return (
     <div>
@@ -94,6 +118,7 @@ export default function AddPost() {
             initialValues={{
               title: "",
               description: "",
+              postImage: `${addedImage}`,
             }}
             validationSchema={adminAddPost}
             onSubmit={(values) => addPost(values)}
@@ -112,9 +137,29 @@ export default function AddPost() {
                   type="text"
                   isInput={false}
                 />
-                <button type="submit" className={utilsStyles.tButton}>
-                  Add
-                </button>
+                {/* <TextField
+                  label="Image"
+                  name="postImage"
+                  type="file"
+                  onChange={(e) => setFileSelected(e.target.files[0])}
+                /> */}
+                <input
+                  type="file"
+                  name="postImage"
+                  onChange={(e) => setFileSelected(e.target.files[0])}
+                  id="file"
+                  className={styles["file"]}
+                />
+                <label htmlFor="file">
+                  {fileSelected ? fileSelected.name : "File"}
+                </label>
+                {isLoading ? (
+                  <Loader />
+                ) : (
+                  <button type="submit" className={utilsStyles.tButton}>
+                    Add
+                  </button>
+                )}
               </Form>
             )}
           </Formik>

@@ -1,6 +1,6 @@
 .postsContainer {
     padding: 32px;
-
+   
     input {
         width: 100%;
         margin-bottom: 24px;
@@ -15,7 +15,15 @@
             border-radius: 4px;
             position: relative;
             margin-bottom: 12px;
-
+            display: flex;
+            align-items: flex-start;
+            .postImage{
+                margin-right: 12px;
+                img{
+                    border-radius: 4px;
+                }
+            }
+           
             a {
                 font-size: 24px;
                 color: #222;
@@ -23,7 +31,12 @@
                 margin-bottom: 8px;
             }
 
+            h3{
+                margin-bottom: 12px;
+            }
+
             p {
+                margin-top: 12px;
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
@@ -55,6 +68,7 @@
             }
         }
     }
+
 
     .header {
         display: flex;

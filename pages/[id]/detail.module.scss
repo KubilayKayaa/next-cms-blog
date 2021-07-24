@@ -24,7 +24,16 @@
             margin-left: 32px;
             padding-right: 32px;
             h3{
-                margin-bottom: 4px;
+                margin-top: 24px;
+                margin-bottom: 16px;
+            }
+            p{
+                line-height: 24px;
+            }
+            .postImage{
+                img{
+                    border-radius: 8px;
+                }
             }
         }
     }

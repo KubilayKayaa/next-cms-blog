@@ -8,6 +8,7 @@ import utilsStyles from "../../../../styles/utils.module.scss";
 import { BiShowAlt } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 function Index({ post, comments }) {
   const Router = useRouter();
@@ -75,8 +76,25 @@ function Index({ post, comments }) {
             <div className={styles.postsContainer}>
               <div className={styles.posts}>
                 <div className={styles.post} key={post._id}>
-                  <h3>{post.data.title}</h3>
-                  <p>{post.data.description}</p>
+                  {post.data.postImage &&
+                    post.data.postImage.length != "" &&
+                    post.data.postImage != "undefined" && (
+                      <div className={styles.postImage}>
+                        <Image
+                          src={post.data.postImage}
+                          alt={post.data.title}
+                          layout="fixed"
+                          width={320}
+                          height={320}
+                          objectFit="cover"
+                          priority
+                        />
+                      </div>
+                    )}
+                  <div className={styles.adminPostDetailInfo}>
+                    <h3>{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                  </div>
                 </div>
               </div>
             </div>

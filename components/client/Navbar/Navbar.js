@@ -3,12 +3,15 @@ import { AiOutlineTwitter, AiFillGithub } from "react-icons/ai";
 import { FiInstagram } from "react-icons/fi";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Navbar({ userInfo }) {
   return (
     <nav className={styles.nav}>
-      <h1>{userInfo.data[0].fullName}</h1>
-      <h3>{userInfo.data[0].title}</h3>
+      <div className={styles.info}>
+        <h1>{userInfo.data[0].fullName}</h1>
+        <h3>{userInfo.data[0].title}</h3>
+      </div>
       <div className={styles.socials}>
         {userInfo.data[0].instagram && (
           <Link href={`https://instagram.com/${userInfo.data[0].instagram}`}>

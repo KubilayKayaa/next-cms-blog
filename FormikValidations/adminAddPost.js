@@ -5,6 +5,7 @@ const adminAddPost = Yup.object({
     .max(120, "Must be 40 characters or less.")
     .required("Required."),
   description: Yup.string().required("Required."),
+  postImage: Yup.string(),
 });
 
 export default adminAddPost;

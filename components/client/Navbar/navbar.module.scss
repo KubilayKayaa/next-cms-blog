@@ -3,24 +3,22 @@
 .nav{
     font-family: 'Merienda', cursive;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 32px 0px;
-    background-color: #E8E7D5;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background-color: #fff;
     position: sticky;
     top: 0px;
     left: 0px;
     z-index: 9999;
+    border-bottom: 1px solid #E8E7D5;
     h1{
-        font-size: 48px;
+        font-size: 32px;
         margin-bottom: 12px;
     }
     h3{
-        font-size:20px
+        font-size:16px
     }
     .socials{
-        margin-top: 24px;
         a{
             color:#222;
             margin:0 12px;

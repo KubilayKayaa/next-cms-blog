@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import utilsStyles from "../../../../styles/utils.module.scss";
 import http from "../../../../http-config";
+import Image from "next/image";
 
 export default function DeActivePosts({ searchPost }) {
   const Router = useRouter();
@@ -68,10 +69,27 @@ export default function DeActivePosts({ searchPost }) {
           .filter((p) => p.active === false)
           .map((post) => (
             <div className={styles.post} key={post._id}>
-              <Link href={`/admin/posts/${post._id}`}>
-                <a>{post.title}</a>
-              </Link>
-              <p>{post.description}</p>
+              {post.postImage &&
+                post.postImage.length != "" &&
+                post.postImage != "undefined" && (
+                  <div className={styles.postImage}>
+                    <Image
+                      src={post.postImage}
+                      alt={post.title}
+                      layout="fixed"
+                      width={100}
+                      height={100}
+                      objectFit="cover"
+                      priority
+                    />
+                  </div>
+                )}
+              <div className={styles.postInfo}>
+                <Link href={`/admin/posts/${post._id}`}>
+                  <a>{post.title}</a>
+                </Link>
+                <p>{post.description}</p>
+              </div>
               <div className={styles.actions}>
                 <BiShowAlt
                   color="#afac81"

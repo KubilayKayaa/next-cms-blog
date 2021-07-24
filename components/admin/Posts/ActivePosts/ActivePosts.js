@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import http from "../../../../http-config";
+import Image from "next/image";
 
 export default function ActivePosts({ searchPost }) {
   const Router = useRouter();
@@ -19,6 +20,8 @@ export default function ActivePosts({ searchPost }) {
   const getAllPosts = async () => {
     const res = await fetch(`${http}/api/admin/posts`);
     const data = await res.json();
+
+    console.log(data);
 
     setPosts(data);
   };
@@ -67,10 +70,27 @@ export default function ActivePosts({ searchPost }) {
           .filter((p) => p.active === true)
           .map((post) => (
             <div className={styles.post} key={post._id}>
-              <Link href={`/admin/posts/${post._id}`}>
-                <a>{post.title}</a>
-              </Link>
-              <p>{post.description}</p>
+              {post.postImage &&
+                post.postImage.length != "" &&
+                post.postImage != "undefined" && (
+                  <div className={styles.postImage}>
+                    <Image
+                      src={post.postImage}
+                      alt={post.title}
+                      layout="fixed"
+                      width={100}
+                      height={100}
+                      objectFit="cover"
+                      priority
+                    />
+                  </div>
+                )}
+              <div className={styles.postInfo}>
+                <Link href={`/admin/posts/${post._id}`}>
+                  <a>{post.title}</a>
+                </Link>
+                <p>{post.description}</p>
+              </div>
               <div className={styles.actions}>
                 <BiShowAlt
                   color="#afac81"

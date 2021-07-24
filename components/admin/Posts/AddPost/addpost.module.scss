@@ -1,16 +1,49 @@
-.modalContainer{
+.modalContainer {
     min-width: 380px;
-    .header{
+
+    .header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 32px;
-       .closeModalButton{
-           cursor: pointer;
-       }
-      
+
+        .closeModalButton {
+            cursor: pointer;
+        }
+
     }
-    button,input,textarea{
+
+    button,
+    input,
+    textarea {
         width: 100%;
     }
+
+    [type="file"] {
+      height: 0;
+      overflow: hidden;
+      width: 0;
+      display: none;
+    }
+    
+    [type="file"] + label {
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+      outline: none;
+      padding: 1rem 50px;
+      position: relative;
+      transition: all 0.3s;
+      vertical-align: middle;
+      font-family: 'Source Sans Pro', sans-serif;
+      width: 100%;
+      text-align: center;
+      background-color: #c2bf9b ;
+      
+     
+    }
+   
+
 }

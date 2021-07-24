@@ -10,9 +10,11 @@ import adminComment from "../../FormikValidations/adminComment";
 import http from "../../http-config";
 import Loader from "../../components/Loader/Loader";
 import Head from "next/head";
+import Image from "next/image";
 
 function PostDetail({ post, comments }) {
   const Router = useRouter();
+  console.log(post);
 
   const [showLoader, setShowLoader] = useState(false);
 
@@ -50,6 +52,20 @@ function PostDetail({ post, comments }) {
           <MdArrowBack size="32" />
         </button>
         <div className={styles.postDetail}>
+          {post.data.postImage &&
+            post.data.postImage.length != "" &&
+            post.data.postImage != "undefined" && (
+              <div className={styles.postImage}>
+                <Image
+                  src={post.data.postImage}
+                  alt={post.data.title}
+                  width={1800}
+                  height={480}
+                  objectFit="cover"
+                  priority
+                />
+              </div>
+            )}
           <h3>{post.data.title}</h3>
           <p>{post.data.description}</p>
         </div>
