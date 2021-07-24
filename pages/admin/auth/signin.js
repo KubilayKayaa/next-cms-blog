@@ -47,7 +47,7 @@ export default function Signin() {
         data.user.password == values.password
       ) {
         sessionStorage.setItem("user", JSON.stringify(data.token));
-        Router.push("/admin");
+        Router.push("/admin/posts");
       }
     }
   };
