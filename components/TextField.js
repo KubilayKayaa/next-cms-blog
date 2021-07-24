@@ -20,7 +20,7 @@ const TextField = ({ isInput, label, ...props }) => {
         <textarea
           className={`${meta.touched && meta.error && styles.inputError}`}
           autoComplete="off"
-          rows="5"
+          rows="8"
           {...field}
           {...props}
         ></textarea>
