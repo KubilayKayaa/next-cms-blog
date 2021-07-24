@@ -8,6 +8,10 @@
     flex-direction: column;
     padding: 32px 0px;
     background-color: #E8E7D5;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
     h1{
         font-size: 48px;
         margin-bottom: 12px;

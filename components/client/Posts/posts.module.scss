@@ -1,8 +1,18 @@
 .posts {
-    padding: 32px;
-    .search{
-        width: 100%;
-        margin-bottom: 20px;
+    padding: 0px 32px;
+
+    .searchContainer {
+        padding: 20px 0px;
+        background-color: #fff;
+        z-index: 99;
+        position: sticky;
+        top: 227px;
+        left: 0px;
+
+        .search {
+            width: 100%;
+            padding-right: 16px;
+        }
     }
 
     .post {
@@ -26,13 +36,13 @@
             color: #222;
         }
 
-        &:hover{
+        &:hover {
             box-shadow: -3px 3px 10px #E8E7D5;
         }
 
-        .time{
+        .time {
             background-color: #eeeedf;
-            padding:4px 8px;
+            padding: 4px 8px;
             border-radius: 4px;
             width: fit-content;
             margin-top: 12px;

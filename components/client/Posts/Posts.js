@@ -10,12 +10,14 @@ export default function Posts({ postsInfo }) {
 
   return (
     <div className={styles.posts}>
-      <Search
-        placeholder="Search..."
-        searchPost={searchPost}
-        setSearchPost={setSearchPost}
-        className={styles.search}
-      />
+      <div className={styles.searchContainer}>
+        <Search
+          placeholder="Search..."
+          searchPost={searchPost}
+          setSearchPost={setSearchPost}
+          className={styles.search}
+        />
+      </div>
       {postsInfo.data
         .filter((po) => {
           if (searchPost === "") {
