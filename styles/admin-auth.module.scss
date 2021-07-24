@@ -29,11 +29,7 @@ $d-green:#80806d;
             width: 100%;
         }
 
-        .loaderContainer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        
 
         .link {
             text-align: center;
@@ -46,4 +42,13 @@ $d-green:#80806d;
         }
       
     }
+}
+
+.loaderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin:0 auto;
 }

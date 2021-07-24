@@ -7,6 +7,7 @@ import { Formik, Form } from "formik";
 import TextField from "../../../TextField";
 import adminAddPost from "../../../../FormikValidations/adminAddPost";
 import { useRouter } from "next/dist/client/router";
+import http from "../../../../http-config";
 
 const customStyles = {
   content: {
@@ -31,7 +32,7 @@ export default function AddPost() {
   const closeModal = () => setIsOpen(false);
 
   const addPost = async (values) => {
-    const allRes = await fetch("http://localhost:3000/api/admin/posts");
+    const allRes = await fetch(`${http}/api/admin/posts`);
     const allData = await allRes.json();
 
     const sameData = allData.data.find((d) => d.title === values.title);
@@ -39,7 +40,7 @@ export default function AddPost() {
     if (sameData) {
       setIsSameData(true);
     } else {
-      const res = await fetch("http://localhost:3000/api/admin/posts", {
+      const res = await fetch(`${http}/api/admin/posts`, {
         method: "POST",
         headers: {
           Accept: "application/json",

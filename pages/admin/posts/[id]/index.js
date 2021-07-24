@@ -1,5 +1,6 @@
 import Navbar from "../../../../components/admin/Navbar/Navbar";
 import styles from "../../../../pages/admin/posts/posts.module.scss";
+import http from "../../../../http-config";
 
 function Index({ post }) {
   console.log(post);
@@ -21,9 +22,7 @@ function Index({ post }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(
-    `http://localhost:3000/api/admin/posts/${context.query.id}`
-  );
+  const res = await fetch(`${http}/api/admin/posts/${context.query.id}`);
   const post = await res.json();
 
   return {

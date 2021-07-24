@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import utilsStyles from "../../../../styles/utils.module.scss";
+import http from "../../../../http-config";
 
 export default function DeActivePosts({ searchPost }) {
   const Router = useRouter();
@@ -17,7 +18,7 @@ export default function DeActivePosts({ searchPost }) {
   }, []);
 
   const getAllPosts = async () => {
-    const res = await fetch("http://localhost:3000/api/admin/posts");
+    const res = await fetch(`${http}/api/admin/posts`);
     const data = await res.json();
 
     setPosts(data);
@@ -25,7 +26,7 @@ export default function DeActivePosts({ searchPost }) {
 
   const deletePost = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/admin/posts/${id}`, {
+      const res = await fetch(`${http}/api/admin/posts/${id}`, {
         method: "DELETE",
       });
       Router.reload(window.location.pathname);
@@ -36,7 +37,7 @@ export default function DeActivePosts({ searchPost }) {
 
   const activePost = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/admin/posts/${id}`, {
+      const res = await fetch(`${http}/api/admin/posts/${id}`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
