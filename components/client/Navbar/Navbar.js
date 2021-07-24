@@ -1,9 +1,7 @@
 import styles from "./navbar.module.scss";
 import { AiOutlineTwitter, AiFillGithub } from "react-icons/ai";
 import { FiInstagram } from "react-icons/fi";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export default function Navbar({ userInfo }) {
   return (

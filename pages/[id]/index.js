@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./detail.module.scss";
 import { MdArrowBack } from "react-icons/md";
-import Link from "next/link";
 import utilsStyles from "../../styles/utils.module.scss";
 import { useRouter } from "next/dist/client/router";
 import { Formik, Form } from "formik";

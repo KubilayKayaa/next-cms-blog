@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import http from "../http-config";
 import Axios from "axios";
 import { Image } from "cloudinary-react";
 

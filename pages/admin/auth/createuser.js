@@ -6,7 +6,6 @@ import adminAuthSignup from "../../../FormikValidations/adminAuthSignup";
 import http from "../../../http-config";
 import Loader from "../../../components/Loader/Loader";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Redirect from "../../../components/Redirect";
 

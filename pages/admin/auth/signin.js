@@ -6,7 +6,6 @@ import adminAuthSignin from "../../../FormikValidations/adminAuthSignin";
 import http from "../../../http-config";
 import Loader from "../../../components/Loader/Loader";
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Head from "next/head";
 

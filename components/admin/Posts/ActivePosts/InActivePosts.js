@@ -5,7 +5,6 @@ import { BiShowAlt } from "react-icons/bi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import utilsStyles from "../../../../styles/utils.module.scss";
 import http from "../../../../http-config";
 import Image from "next/image";
 
