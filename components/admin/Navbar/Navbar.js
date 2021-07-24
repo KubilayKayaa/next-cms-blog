@@ -37,7 +37,6 @@ export default function Navbar() {
         </Link>
         <Link href="/admin/auth/createuser">
           <a
-            target="_blank"
             className={
               navbarStyles.navbarLinkItem +
               "  " +
