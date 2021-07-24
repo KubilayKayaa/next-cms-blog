@@ -34,6 +34,7 @@ export default function Posts({ postsInfo }) {
               <a className={styles.postTitle}>{post.title}</a>
             </Link>
             <p>{post.description}</p>
+            <p className={styles.time}>{post.time.split("T")[0]}</p>
           </div>
         ))}
     </div>
