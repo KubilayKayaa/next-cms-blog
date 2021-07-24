@@ -1,0 +1,33 @@
+.posts {
+    padding: 32px;
+    .search{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .post {
+        border: 1px solid #eee;
+        border-radius: 4px;
+        padding: 16px;
+        margin-bottom: 20px;
+        transition: 300ms all;
+
+        p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .postTitle {
+            font-size: 24px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        &:hover{
+            box-shadow: -3px 3px 10px #E8E7D5;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.container {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    margin-top: 48px;
+
+    form {
+        padding: 32px;
+        border: 1px solid #dbdbc367;
+        -webkit-box-shadow: -3px 3px 3px #d2d2bba1;
+        box-shadow: -3px 3px 3px #d2d2bba1;
+        border-radius: 4px;
+        min-width: 380px;
+        input,button{
+            width: 100%;
+        }
+        .loader{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+}

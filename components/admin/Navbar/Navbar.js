@@ -14,12 +14,24 @@ export default function Navbar() {
 
   return (
     <nav className={navbarStyles.navbar}>
-      <Link href="/admin/posts">
-        <a>Home</a>
+      <Link href="/admin">
+        <a className={navbarStyles.navbarLogo}>Home</a>
       </Link>
-      <button onClick={signOut} className={utilsStyles.tButton}>
-        Sign Out
-      </button>
+      <div>
+        <Link href="/admin/posts">
+          <a className={navbarStyles.navbarLink}>Posts</a>
+        </Link>
+        <button className={utilsStyles.tButton + " " + navbarStyles.navbarLink}>
+          <Link href="/">
+            <a target="_blank" className={navbarStyles.navbarLinkItem}>
+              Live
+            </a>
+          </Link>
+        </button>
+        <button onClick={signOut} className={utilsStyles.tButton}>
+          Sign Out
+        </button>
+      </div>
     </nav>
   );
 }
