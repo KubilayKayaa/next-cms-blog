@@ -25,6 +25,20 @@ body {
   font-size: 15px;
 }
 
+
+
+body::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #fff;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	background-color: #eeecc0;
+}
+
+
 a{
   &:hover{
     color:inherit;

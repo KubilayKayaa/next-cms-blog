@@ -4,8 +4,14 @@ import http from "../../../../http-config";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Redirect from "../../../../components/Redirect";
+import utilsStyles from "../../../../styles/utils.module.scss";
+import { BiShowAlt } from "react-icons/bi";
+import { AiOutlineDelete } from "react-icons/ai";
+import { useRouter } from "next/router";
 
-function Index({ post }) {
+function Index({ post, comments }) {
+  const Router = useRouter();
+
   const [isAuth, setIsAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,6 +19,45 @@ function Index({ post }) {
     setIsAuth(sessionStorage.getItem("user") ? true : false);
     setIsLoading(false);
   }, [isAuth]);
+
+  const deleteComment = async (id) => {
+    const res = await fetch(`${http}/api/admin/comments/${id}`, {
+      method: "DELETE",
+    });
+    if (res.status === 200) {
+      Router.reload(window.location.pathname);
+    }
+    console.log(res);
+  };
+
+  const activeComment = async (id) => {
+    const res = await fetch(`${http}/api/admin/comments/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ active: true }),
+    });
+    if (res.status === 200) {
+      Router.reload(window.location.pathname);
+    }
+  };
+
+  const inactiveComment = async (id) => {
+    const res = await fetch(`${http}/api/admin/comments/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ active: false }),
+    });
+
+    if (res.status === 200) {
+      Router.reload(window.location.pathname);
+    }
+  };
 
   if (isLoading) {
     return null;
@@ -36,6 +81,62 @@ function Index({ post }) {
               </div>
             </div>
           )}
+          <div className={styles.comments}>
+            <h3>Active Comments</h3>
+            <div className={utilsStyles.hUnderline}></div>
+            {comments.data
+              .filter((comment) => comment.postId === post.data._id)
+              .filter((comm) => comm.active === true)
+              .map((c) => (
+                <div key={c._id} className={styles.eachComment}>
+                  <h3 className={styles.userComment}>{c.comment}</h3>
+                  <div className={styles.user}>
+                    <p>{c.fullName}</p>
+                    <p>{c.email}</p>
+                    <p>{c.time.split("T")[0]}</p>
+                  </div>
+                  <div className={styles.actions}>
+                    <BiShowAlt
+                      color="#80806e"
+                      size="20"
+                      onClick={() => inactiveComment(c._id)}
+                    />
+                    <AiOutlineDelete
+                      color="#80806e"
+                      size="20"
+                      onClick={() => deleteComment(c._id)}
+                    />
+                  </div>
+                </div>
+              ))}
+            <h3 className={styles.inactiveHeader}>Inactive Comments</h3>
+            <div className={utilsStyles.hUnderline}></div>
+            {comments.data
+              .filter((comment) => comment.postId === post.data._id)
+              .filter((comm) => comm.active === false)
+              .map((c) => (
+                <div key={c._id} className={styles.eachComment}>
+                  <h3 className={styles.userComment}>{c.comment}</h3>
+                  <div className={styles.user}>
+                    <p>{c.fullName}</p>
+                    <p>{c.email}</p>
+                    <p>{c.time.split("T")[0]}</p>
+                  </div>
+                  <div className={styles.actions}>
+                    <BiShowAlt
+                      color="#80806e"
+                      size="20"
+                      onClick={() => activeComment(c._id)}
+                    />
+                    <AiOutlineDelete
+                      color="#80806e"
+                      size="20"
+                      onClick={() => deleteComment(c._id)}
+                    />
+                  </div>
+                </div>
+              ))}
+          </div>
         </div>
       );
     } else {
@@ -48,8 +149,11 @@ export async function getServerSideProps(context) {
   const res = await fetch(`${http}/api/admin/posts/${context.query.id}`);
   const post = await res.json();
 
+  const resComments = await fetch(`${http}/api/admin/comments`);
+  const comments = await resComments.json();
+
   return {
-    props: { post },
+    props: { post, comments },
   };
 }
 

@@ -33,7 +33,6 @@ function Index({ userInfo }) {
         },
         body: JSON.stringify(values),
       });
-      console.log(res.status);
       if (res.status === 200) {
         setIsSuccess(true);
         setTimeout(() => {

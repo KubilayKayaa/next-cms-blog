@@ -6,7 +6,6 @@ import Navbar from "../components/client/Navbar/Navbar";
 import Posts from "../components/client/Posts/Posts";
 
 function Home({ userInfo, postsInfo }) {
-  console.log(userInfo);
   return (
     <div className={styles.container}>
       <Head>

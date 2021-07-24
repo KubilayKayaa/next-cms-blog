@@ -4,8 +4,6 @@ import Search from "../../admin/Posts/Search";
 import { useState } from "react";
 
 export default function Posts({ postsInfo }) {
-  console.log(postsInfo);
-
   const [searchPost, setSearchPost] = useState("");
 
   return (
