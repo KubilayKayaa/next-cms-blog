@@ -67,7 +67,6 @@ export default function AddPost() {
             });
 
             const postData = await resPost.json();
-            console.log(postData);
             if (postData.success == true) {
               setIsLoading(true);
               setIsSameData(false);
@@ -86,8 +85,6 @@ export default function AddPost() {
         .catch((err) => console.error(err));
     }
   };
-
-  console.log(fileSelected);
 
   return (
     <div>

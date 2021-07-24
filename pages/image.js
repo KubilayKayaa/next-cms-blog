@@ -15,7 +15,7 @@ export default function image() {
     Axios.post(
       "https://api.cloudinary.com/v1_1/dkkutz5oe/image/upload",
       formData
-    ).then((res) => console.log(res));
+    ).then((res) => {});
   };
 
   return (

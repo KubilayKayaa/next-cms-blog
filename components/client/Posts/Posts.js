@@ -10,7 +10,6 @@ export default function Posts({ postsInfo }) {
 
   useEffect(() => {
     function updateSize() {
-      console.log(window.scrollY);
       if (window.scrollY > 5) {
         setScrolled(true);
       } else {
@@ -21,8 +20,6 @@ export default function Posts({ postsInfo }) {
       updateSize();
     };
   }, []);
-
-  console.log(scrolled);
 
   return (
     <>

@@ -14,7 +14,6 @@ import Image from "next/image";
 
 function PostDetail({ post, comments }) {
   const Router = useRouter();
-  console.log(post);
 
   const [showLoader, setShowLoader] = useState(false);
 
@@ -34,8 +33,6 @@ function PostDetail({ post, comments }) {
       setShowLoader(false);
     }
   };
-
-  console.log(post);
 
   return (
     <div className={styles.container}>

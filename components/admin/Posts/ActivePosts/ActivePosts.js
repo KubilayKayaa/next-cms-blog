@@ -21,8 +21,6 @@ export default function ActivePosts({ searchPost }) {
     const res = await fetch(`${http}/api/admin/posts`);
     const data = await res.json();
 
-    console.log(data);
-
     setPosts(data);
   };
 

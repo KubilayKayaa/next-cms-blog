@@ -28,7 +28,6 @@ function Index({ post, comments }) {
     if (res.status === 200) {
       Router.reload(window.location.pathname);
     }
-    console.log(res);
   };
 
   const activeComment = async (id) => {
