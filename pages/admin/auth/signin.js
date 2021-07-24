@@ -48,7 +48,6 @@ export default function Signin() {
       ) {
         sessionStorage.setItem("user", JSON.stringify(data.token));
         Router.push("/admin");
-        // window.location.href = "/admin/posts";
       }
     }
   };
@@ -105,8 +104,8 @@ export default function Signin() {
                     </a>
                   </Link> */}
                   <div className={styles.commentLine}>
-                    <p>//test@test.com</p>
-                    <p>//123456</p>
+                    <p>test@test.com</p>
+                    <p>123456</p>
                   </div>
                 </>
               )}
