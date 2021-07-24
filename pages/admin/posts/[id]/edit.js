@@ -29,7 +29,16 @@ function Edit({ post, url }) {
     const res = await fetch(`${http}/api/admin/posts`);
     const data = await res.json();
 
-    const sameData = data.data.find((d) => d.title === values.title);
+    console.log(data);
+    const sameData = data.data.find(
+      (d) => d.title === values.title && d.description === values.description
+    );
+
+    // if (sameData) {
+    //   console.log("hata");
+    // } else {
+    //   console.log("güncelle");
+    // }
 
     if (sameData) {
       setSameDataError(true);
