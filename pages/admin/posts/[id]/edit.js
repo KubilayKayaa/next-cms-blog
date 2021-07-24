@@ -29,8 +29,6 @@ function Edit({ post, url }) {
     const res = await fetch(`${http}/api/admin/posts`);
     const data = await res.json();
 
-    console.log(data);
-
     const sameData = data.data.find((d) => d.title === values.title);
 
     if (sameData) {

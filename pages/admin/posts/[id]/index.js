@@ -3,7 +3,6 @@ import styles from "../../../../pages/admin/posts/posts.module.scss";
 import http from "../../../../http-config";
 
 function Index({ post }) {
-  console.log(post);
   return (
     <div>
       <Navbar />

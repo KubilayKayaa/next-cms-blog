@@ -50,9 +50,6 @@ export default function ActivePosts({ searchPost }) {
     }
   };
 
-  console.log(posts && posts.data.filter((p) => p.active === true));
-  console.log(posts && posts.data.length !== 0 ? "0a eşit" : "0a eşit değil");
-
   return (
     <div className={styles.posts}>
       {posts &&
