@@ -5,6 +5,7 @@ import Search from "../../../components/admin/Posts/Search";
 import styles from "./posts.module.scss";
 import ActivePosts from "../../../components/admin/Posts/ActivePosts/ActivePosts";
 import AddPost from "../../../components/admin/Posts/AddPost/AddPost";
+import InActivePosts from "../../../components/admin/Posts/ActivePosts/InActivePosts";
 
 export default function Index() {
   const [isAuth, setIsAuth] = useState(false);
@@ -30,10 +31,13 @@ export default function Index() {
               setSearchPost={setSearchPost}
             />
             <div className={styles.header}>
-              <h1>All Posts</h1>
+              <h1></h1>
               <AddPost />
             </div>
-            <ActivePosts />
+            <h3>Active Posts</h3>
+            <ActivePosts searchPost={searchPost} />
+            <h3>Inactive Posts</h3>
+            <InActivePosts searchPost={searchPost} />
           </div>
         </>
       );

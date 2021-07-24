@@ -5,8 +5,9 @@ import { BiShowAlt } from "react-icons/bi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import utilsStyles from "../../../../styles/utils.module.scss";
 
-export default function ActivePosts({ searchPost }) {
+export default function DeActivePosts({ searchPost }) {
   const Router = useRouter();
 
   const [posts, setPosts] = useState();
@@ -33,7 +34,7 @@ export default function ActivePosts({ searchPost }) {
     }
   };
 
-  const inactivePost = async (id) => {
+  const activePost = async (id) => {
     try {
       const res = await fetch(`http://localhost:3000/api/admin/posts/${id}`, {
         method: "PUT",
@@ -41,16 +42,13 @@ export default function ActivePosts({ searchPost }) {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ active: false }),
+        body: JSON.stringify({ active: true }),
       });
       Router.reload(window.location.pathname);
     } catch (error) {
       console.log("error", error);
     }
   };
-
-  console.log(posts && posts.data.filter((p) => p.active === true));
-  console.log(posts && posts.data.length !== 0 ? "0a eşit" : "0a eşit değil");
 
   return (
     <div className={styles.posts}>
@@ -66,7 +64,7 @@ export default function ActivePosts({ searchPost }) {
               return po;
             }
           })
-          .filter((p) => p.active === true)
+          .filter((p) => p.active === false)
           .map((post) => (
             <div className={styles.post} key={post._id}>
               <Link href={`/admin/posts/${post._id}`}>
@@ -77,14 +75,13 @@ export default function ActivePosts({ searchPost }) {
                 <BiShowAlt
                   color="#afac81"
                   size="20"
-                  onClick={() => inactivePost(post._id)}
+                  onClick={() => activePost(post._id)}
                 />
                 <FiEdit2
                   color="#afac81"
                   size="18"
                   onClick={() => Router.push(`/admin/posts/${post._id}/edit`)}
                 />
-
                 <AiOutlineDelete
                   color="#afac81"
                   size="20"
