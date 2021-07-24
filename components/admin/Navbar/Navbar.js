@@ -21,19 +21,39 @@ export default function Navbar() {
         <Link href="/admin">
           <a className={navbarStyles.navbarLink}>Change User Informations</a>
         </Link>
-        <button className={utilsStyles.tButton + " " + navbarStyles.navbarLink}>
-          <Link href="/">
-            <a target="_blank" className={navbarStyles.navbarLinkItem}>
-              See Live
-            </a>
-          </Link>
-        </button>
-        <button className={utilsStyles.tButton + " " + navbarStyles.navbarLink}>
-          <Link href="/admin/auth/createuser">
-            <a className={navbarStyles.navbarLinkItem}>Create User</a>
-          </Link>
-        </button>
-        <button onClick={signOut} className={utilsStyles.tButton}>
+        <Link href="/">
+          <a
+            target="_blank"
+            className={
+              navbarStyles.navbarLinkItem +
+              "  " +
+              utilsStyles.tButton +
+              "  " +
+              navbarStyles.navbarLink
+            }
+          >
+            See Live
+          </a>
+        </Link>
+        <Link href="/admin/auth/createuser">
+          <a
+            target="_blank"
+            className={
+              navbarStyles.navbarLinkItem +
+              "  " +
+              utilsStyles.tButton +
+              "  " +
+              navbarStyles.navbarLink
+            }
+          >
+            Create Admin User
+          </a>
+        </Link>
+
+        <button
+          onClick={signOut}
+          className={utilsStyles.tButton + "  " + navbarStyles.navbarLink}
+        >
           Sign Out
         </button>
       </div>

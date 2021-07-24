@@ -1,3 +1,5 @@
+$b-o-d-green:#9c9c87;
+
 .navbar {
     width: 100%;
     box-shadow: -6px 6px 6px rgba(238, 238, 238, 0.479);
@@ -25,6 +27,14 @@
     .navbarLink {
         margin-right: 12px;
         color:#222;
+        padding: 12px;
+        border-radius: 4px;
+        min-height: 45px;
+        transition: 200ms all;
+        &:hover {
+            background: transparent !important;
+            color: #222 !important;
+        }
     }
 
     .navbarLinkItem {
