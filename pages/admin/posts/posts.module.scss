@@ -119,8 +119,7 @@
             position: absolute;
             top: 12px;
             right: 0px;
-            visibility: hidden;
-                opacity: 0;
+            
                 transition: 200ms all;
 
             svg{
@@ -128,12 +127,7 @@
                 cursor: pointer;
             }
         }
-        &:hover {
-            .actions {
-                visibility: visible;
-                opacity: 1;
-            }
-        }
+        
     }
     .eachComment:last-child{
         margin-bottom: 0px;
