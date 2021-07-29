@@ -50,8 +50,6 @@
                 right: 16px;
                 display: flex;
                 align-items: center;
-                visibility: hidden;
-                opacity: 0;
                 transition: 200ms all;
 
                 svg {
@@ -60,12 +58,6 @@
                 }
             }
 
-            &:hover {
-                .actions {
-                    visibility: visible;
-                    opacity: 1;
-                }
-            }
         }
     }
 
